@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{%load static%}
+{% load education_app_tags %}
+
+{% block content %}
+
+{% get_teachers as teachers_tags %}
+  <div class="container bg-white">
+    <form class="row pt-3 pb-3">
+      <div class="col-auto">
+        <input type="text" class="form-control bg-light" id="inputPassword2" >
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Поиск</button>
+      </div>
+    </form>
+  <div class="row g-4">
+
+    {% for t in teachers_tags%}
+    <div class="card ms-5 bg-light" style="width: 14rem">
+
+      <img src="{{ t.photo.url }}" class="card-img-top rounded-2" style = 'margin-top: 10px;'>
+      <div class="card-body">
+        <h5 class="card-title">{{t.name}}</h5>
+        <p class="card-text text-muted">{{t.university}}</p>
+      </div>
+      <a href="{% url 'post' t.slug %}" class="btn btn-primary" style = 'margin-bottom: 10px;'>Подробнее</a>
+    </div>
+    {% endfor %}
+
+    </div>
+    <hr>
+  </div>
+
+
+  {% endblock %}

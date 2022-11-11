@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load education_app_tags %}
+
+
+{% get_areas as areas_tags %}
+
+  <div class="container bg-white">
+      <form class="row pt-3 pb-3">
+        <div class="col-auto">
+          <input type="text" class="form-control bg-light" id="inputPassword2">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Поиск</button>
+        </div>
+      </form>
+    <div class="row g-2">
+          <div class="list-group">
+            {% for t in areas_tags%}
+
+            <a href="{% url 'ed' t.slug %}" class="list-group-item list-group-item-action" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{t.title}}</h5>
+                <small class="badge bg-primary rounded-5">{{t.rating}}</small>
+              </div>
+              <small >{{t.code}}</small>
+              {% endfor %}
+
+
+            </a>
+
+          </div>
+      </div>
+      <hr>
+    </div>
+    {% endblock %}

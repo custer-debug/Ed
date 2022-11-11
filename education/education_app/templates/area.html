@@ -1,0 +1,105 @@
+{% extends 'base.html'%}
+{% block content %}
+
+
+  <div class="container">
+    <div class = 'row justify-content-md-center p-2'>
+        <div class = 'col-md-auto bg-white border border-muted border-1 rounded-bottom rounded-3'>
+            <h1 class = 'display-6'>{{study.title}}</h1>
+        </div>
+    </div>
+    <div class="row g-2 p-2">
+        <div class="col">
+         <div class="p-2 bg-white border border-muted border-1 rounded-bottom rounded-3 ">
+            <h5 class = 'p d-flex justify-content-center '>Результат опросников</h5>
+            <hr>
+            <p>Количество опрошенных студентов: {{study.ct_students}}</p>
+            <p style = 'margin-bottom: 5px;'>Легко ли вы осваиваете материал?
+              <div class = 'row'>
+                <label class = 'col-auto text-success'>
+                  {{study.ct_complexity_easy}}% (Легко)
+              </label>
+                <label class = 'col text-danger'>
+                  {{study.ct_complexity_hard}}% (Тяжко идет)
+              </label>
+              </div>
+
+            </p>
+            <p style = 'margin-bottom: 5px;'>Примерный рейтинг после каждой сессии:
+              <div class = 'row'>
+              <label class = 'col-auto text-success'>{{study.ct_mark_5}}%(5)</label>
+              <label class = 'col-auto text-warning'>{{study.ct_mark_4}}%(4)</label>
+              <label class = 'col text-danger'>{{study.ct_mark_3}}%(3)</label>
+              </div>
+            </p>
+            <p style = 'margin-bottom: 5px;'>Довольны ли вы практическими навыками?
+              <div class = 'row'>
+                <label class = 'col-auto text-success'>{{study.ct_practical_yes}}% (Да)</label>
+                <label class = 'col text-danger'>{{study.ct_practical_no}}% (Нет)</label>
+              </div>
+            </p>
+
+            <p style = 'margin-bottom: 5px;'>Собираетесь ли Вы работать по специальности?
+              <div class = 'row'>
+                <label class = 'col-auto text-success'>{{study.ct_jobs_yes}}% (Да)</label>
+                <label class = 'col text-danger'>{{study.ct_jobs_no}}% (Нет)</label>
+
+              </div>
+            </p>
+         </div>
+        </div>
+
+        <div class="col">
+          <div class="p-2 bg-white border border-muted border-1 rounded-bottom rounded-3">
+            <h5 class = 'p d-flex justify-content-center '>Количество поступивших</h5>
+            <hr>
+
+            {{Plot}}
+          </div>
+        </div>
+
+      </div>
+
+      <div class = 'row g-2 p-2'>
+        <div class="col-6">
+          <div class="p-2 bg-white border border-muted border-1 rounded-bottom rounded-3">
+            <h5 class = 'd-flex justify-content-center '>Занятость</h5>
+            <hr>
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                type="button" role="tab" aria-controls="home" aria-selected="true">Инфо</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Зарплата</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
+                type="button" role="tab" aria-controls="contact" aria-selected="false">Города</button>
+              </li>
+            </ul>
+            <div class="tab-content" style ='padding-top: 1em;' id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <p>Количество вакансий: {{study.ct_vacancy}}</p>
+              </div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <p>Минимальная зарплата: {{study.min_salary}} рублей</p>
+                <p>Максимальная зарплата: {{study.max_salary}} рублей</p>
+
+              </div>
+              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+            </div>
+
+
+
+          </div>
+        </div>
+
+      </div>
+
+  </div>
+
+
+  {% endblock %}

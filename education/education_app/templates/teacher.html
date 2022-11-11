@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block content %}
+
+
+  <div class="container bg-white overflow-hidden">
+        <div class="row gx-3" style = 'margin-top: 10px;' >
+          <div class="col-md-3">
+            <img src="{{ post.photo.url }}" class="img-fluid rounded-4">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{post.name}} <a href="#">{{post.rating}}</a></h5>
+              <p class="card-text">{{post.post}}</p>
+              <p class="card-text"><small class="text-muted">{{post.university}}</small></p>
+              <div class = 'row'>
+                  <div class = 'col-md-3'>
+                      Опыт преподавания:
+                    </div>
+                    <div class = 'col-md-3'>
+                        {{post.expirience}} лет
+                    </div>
+              </div>
+
+              <div class = 'row g-0'>
+                <div class = 'col-md-3'>
+                    Область преподавания:
+                  </div>
+                  <div class = 'col'>
+                      {{post.disciplines}}
+                    </div>
+            </div>
+
+            <div class = 'row g-0'>
+                <div class = 'col-md-3'>
+                    Образование:
+                  </div>
+                  <div class = 'col'>
+                      {{post.education}}
+                    </div>
+            </div>
+
+            <!-- <div class = 'row g-0'>
+                <div class = 'col-md-3'>
+                    Награды:
+                  </div>
+                  <div class = 'col-md-3'>
+                      {{awards}}
+                    </div>
+            </div> -->
+
+
+            </div>
+          </div>
+        </div>
+  </div>
+
+
+
+
+  {% endblock %}

@@ -1,0 +1,44 @@
+{% load static %}
+
+{% load education_app_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "{% static 'css/bootstrap.css' %}" type="text/css" rel = "stylesheet">
+    <link href = "{% static 'img/ED.ico' %}" type="image/x-icon" rel = "shortcut icon">
+    <title>{{title}}</title>
+</head>
+<body style = "background: #ffffff url(/static/img/background.png)">
+{% get_menu as menu %}
+
+{% block mainmenu %}
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:darkblue">
+    <a class="navbar-brand" style="margin-left:15px;" href="{% url 'home' %}" >
+    <img src="{% static 'img/ED.png' %}" style="width:50px">
+    </a>
+
+    <ul class="navbar-nav">
+      {% for m in menu %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url m.url_name %}">
+        <h5 class="text-light">{{m.title}}</h1>
+        </a>
+      </li>
+      {% endfor %}
+
+    </ul>
+  </nav>
+
+{% endblock mainmenu %}
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+</html>
